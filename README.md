@@ -1,134 +1,166 @@
 # Breast Cancer Biomarker Discovery Using Transcriptomic Analysis
 
+<p align="center">
+  <img src="assets/project_preview.png" width="850">
+</p>
+
+<p align="center">
+  <a href="notebooks/Breast_Cancer_Biomarker_Discovery.ipynb">
+    <img src="https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter">
+  </a>
+  <img src="https://img.shields.io/badge/Python-3.x-blue?logo=python">
+  <img src="https://img.shields.io/badge/Analysis-Transcriptomics-green">
+</p>
+
+---
+
 ## Overview
 
 This project investigates gene expression differences between breast cancer and normal breast tissue using publicly available transcriptomic data from the Gene Expression Omnibus (GEO) database.
 
-The aim of this analysis is to identify differentially expressed genes, characterize molecular patterns associated with breast cancer progression, and explore biological pathways that may contribute to disease development.
+The objective of this analysis is to identify differentially expressed genes, characterize molecular changes associated with breast cancer, and explore biological pathways that may contribute to disease progression.
 
-The project integrates statistical differential expression analysis, gene annotation, dimensionality reduction, clustering, and functional enrichment analysis to identify potential biomarker candidates and biological mechanisms.
+The workflow integrates statistical differential expression analysis, gene annotation, dimensionality reduction, clustering, and functional enrichment analysis to identify potential biomarker candidates.
 
 ---
 
-## Dataset
+# Dataset
 
 **Dataset:** GSE42568  
 **Platform:** Affymetrix Human Genome U133 Plus 2.0 Array (GPL570)  
 **Organism:** Homo sapiens  
 
-The dataset contains gene expression profiles from:
+The dataset consists of:
 
 - 104 breast cancer tissue samples
 - 17 normal breast tissue samples
 
-The raw expression data was obtained from the Gene Expression Omnibus (GEO) database and processed for downstream transcriptomic analysis.
+Gene expression profiles and sample metadata were obtained from the GEO database.
 
 ---
 
-## Analysis Workflow
+# Analysis Workflow
 
-The analysis pipeline consisted of the following steps:
+## 1. Data Acquisition
 
-1. **Data Acquisition**
-   - Downloaded GEO expression dataset using GEOparse.
-   - Extracted sample metadata and expression profiles.
-
-2. **Data Processing**
-   - Constructed gene expression matrix.
-   - Classified samples into cancer and normal groups based on metadata.
-   - Prepared data for statistical comparison.
-
-3. **Differential Expression Analysis**
-   - Compared gene expression between breast cancer and normal tissue.
-   - Applied statistical testing to identify significantly altered genes.
-   - Corrected for multiple hypothesis testing using adjusted p-values (False Discovery Rate).
-
-4. **Gene Annotation**
-   - Mapped Affymetrix probe IDs to gene symbols and functional annotations using GPL570 annotation data.
-
-5. **Exploratory Analysis**
-   - Principal Component Analysis (PCA) to evaluate sample-level expression patterns.
-   - Volcano plot visualization of significant expression changes.
-   - Hierarchical clustering heatmap of top differentially expressed genes.
-
-6. **Functional Enrichment Analysis**
-   - Performed Gene Ontology (GO) enrichment analysis.
-   - Identified biological processes associated with altered gene expression.
+- Downloaded GEO expression data using GEOparse.
+- Extracted sample metadata and expression measurements.
+- Constructed the gene expression matrix for downstream analysis.
 
 ---
 
-## Key Findings
+## 2. Data Processing
 
-### Differentially Expressed Genes
+The dataset was processed by:
+
+- Separating cancer and normal tissue samples.
+- Organizing expression values by probe IDs.
+- Mapping Affymetrix probe identifiers to gene annotations.
+
+---
+
+## 3. Differential Expression Analysis
+
+Gene expression differences between cancer and normal tissue were evaluated using statistical testing.
+
+Multiple hypothesis testing correction was performed using False Discovery Rate (FDR) adjustment.
+
+Significant genes were defined using:
+
+- Adjusted p-value threshold
+- Expression difference between groups
+
+---
+
+# Key Results
+
+## Differentially Expressed Genes
 
 A total of:
 
 **6,468 significant genes**
 
-were identified between breast cancer and normal breast tissue after multiple testing correction.
+were identified between breast cancer and normal breast tissue after statistical correction.
 
-The analysis identified both upregulated and downregulated gene expression patterns.
+Both upregulated and downregulated expression patterns were observed.
 
 ---
 
-## Biological Insights
+# Visualization Results
 
-### Upregulated Processes
+## Principal Component Analysis (PCA)
 
-Significant enrichment was observed in pathways associated with:
+PCA was performed to evaluate overall expression patterns and sample separation between cancer and normal breast tissue.
+
+---
+
+## Differential Expression Volcano Plot
+
+The volcano plot highlights genes showing statistically significant expression changes between the two conditions.
+
+---
+
+## Heatmap of Differentially Expressed Genes
+
+Hierarchical clustering was performed on selected significant genes to visualize expression patterns across samples.
+
+The heatmap demonstrates clear differences in gene expression profiles between breast cancer and normal tissue samples.
+
+<p align="center">
+  <img src="assets/project_preview.png" width="850">
+</p>
+
+---
+
+# Functional Enrichment Analysis
+
+Gene Ontology (GO) enrichment analysis was performed separately for upregulated and downregulated genes.
+
+## Upregulated Biological Processes
+
+The major enriched processes included:
 
 - Chromatin remodeling
 - Chromatin organization
-- DNA metabolism
+- DNA metabolic processes
 - RNA processing
-- Transcriptional regulation
+- Regulation of transcription
 
-These findings suggest alterations in gene regulatory mechanisms and cellular control processes within breast cancer tissue.
+These findings suggest alterations in gene regulation and cellular control mechanisms in breast cancer tissue.
 
 ---
 
-### Downregulated Processes
+## Downregulated Biological Processes
 
-Downregulated genes were associated with:
+Downregulated genes were enriched in:
 
 - Cellular respiration
-- Electron transport chain activity
+- Electron transport chain
 - Fatty acid oxidation
 - Mitochondrial ATP synthesis
-- Lipid metabolism
+- Lipid metabolic processes
 
 Several metabolic genes showed reduced expression, including:
 
 - FABP4
-- LPL
 - LEP
 - RBP4
+- LPL
 - CD36
 - PLIN1
 - PCK1
 
-These results indicate suppression of normal breast metabolic programs during cancer development.
+These results indicate disruption of normal metabolic programs in breast cancer tissue.
 
 ---
 
-## Visualizations
+# Technologies Used
 
-Generated figures include:
-
-- Differential expression volcano plot
-- Principal Component Analysis (PCA)
-- Clustered heatmap of significant genes
-- Gene Ontology enrichment plots
-
----
-
-## Technologies Used
-
-### Programming Language
+## Programming
 
 - Python
 
-### Data Analysis
+## Data Analysis
 
 - pandas
 - numpy
@@ -136,16 +168,30 @@ Generated figures include:
 - statsmodels
 - scikit-learn
 
-### Bioinformatics Tools
+## Bioinformatics
 
 - GEOparse
 - GSEAPY
 
-### Visualization
+## Visualization
 
 - matplotlib
 - seaborn
 
 ---
 
-## Project Structure
+# Project Structure
+# Reproducibility
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Rashi-88/breast-cancer-biomarker-discovery.git
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+Run the analysis notebook:
+
+jupyter notebook notebooks/Breast_Cancer_Biomarker_Discovery.ipynb
